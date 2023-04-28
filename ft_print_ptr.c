@@ -6,12 +6,11 @@
 /*   By: ride-sou <ride-sou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 08:55:39 by ride-sou          #+#    #+#             */
-/*   Updated: 2023/04/28 13:40:24 by ride-sou         ###   ########.fr       */
+/*   Updated: 2023/04/28 17:01:34 by ride-sou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include "libft.h"
 
 int	ft_ptr_len(intptr_t num)
 {
@@ -20,8 +19,8 @@ int	ft_ptr_len(intptr_t num)
 	len = 0;
 	while (num != 0)
 	{
-		num = num / 16;
 		len++;
+		num = num / 16;
 	}
 	return (len);
 }
@@ -44,16 +43,16 @@ void	ft_put_ptr(intptr_t num)
 
 int	ft_print_ptr(unsigned long long ptr)
 {
-	int	print_length;
+	int	print_len;
 
-	print_length = 0;
-	print_length += write(1, "0x", 2);
+	print_len = 0;
+	print_len += write(1, "0x", 2);
 	if (ptr == 0)
-		print_length += write(1, "0", 1);
+		print_len += write(1, "0", 1);
 	else
 	{
 		ft_put_ptr(ptr);
-		print_length += ft_ptr_len(ptr);
+		print_len += ft_ptr_len(ptr);
 	}
-	return (print_length);
+	return (print_len);
 }

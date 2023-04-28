@@ -6,12 +6,11 @@
 /*   By: ride-sou <ride-sou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 11:55:09 by ride-sou          #+#    #+#             */
-/*   Updated: 2023/04/28 13:40:22 by ride-sou         ###   ########.fr       */
+/*   Updated: 2023/04/28 16:33:11 by ride-sou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdlib.h>
 
 int	ft_num_len(unsigned int num)
 {
@@ -47,17 +46,17 @@ char	*ft_uitoa(unsigned int n)
 
 int	ft_print_unsigned(unsigned int n)
 {
-	int		print_length;
+	int		print_len;
 	char	*num;
 
-	print_length = 0;
+	print_len = 0;
 	if (n == 0)
-		print_length += write(1, "0", 1);
+		print_len += write(1, "0", 1);
 	else
 	{
 		num = ft_uitoa(n);
-		print_length += ft_printstr(num);
+		print_len += ft_printstr(num);
 		free(num);
 	}
-	return	(print_length);
+	return (print_len);
 }

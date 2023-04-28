@@ -6,40 +6,40 @@
 #    By: ride-sou <ride-sou@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/13 10:05:12 by ride-sou          #+#    #+#              #
-#    Updated: 2023/04/28 13:40:32 by ride-sou         ###   ########.fr        #
+#    Updated: 2023/04/28 16:26:59 by ride-sou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
 
-SRC = ft_printf.c ft_printf_aux.c ft_print_ptr.c ft_print_unsigned.c
-
-SRC += ft_print_hex.c
-
-MAKE = make -c
-LIB_PATH = libft/libft.a
+SRC = ft_printf.c ft_printf_aux.c ft_print_ptr.c ft_print_unsigned.c \
+	ft_print_hex.c \
 
 OBJS = ${SRC:.c=.o}
 
 RM = rm -f
 CFLAGS = -Wall -Wextra -Werror
+MAKE = make -C
+LIB_PATH = libft/libft.a
+
+all:    ${NAME}
 
 .c.o:
 		cc ${CFLAGS} -c $< -o ${<:.c=.o}
 
-$(NAME):        ${MAKE} ${LIB_PATH}
-				cp ${LIB_PATH} ${NAME}
-				ar rcs ${NAME} ${OBJS}
+$(NAME):    ${OBJS}
+			${MAKE} libft
+			cp ${LIB_PATH} ${NAME}
+			ar rcs ${NAME} ${OBJS}
 
-all:    ${NAME}
-
-clean:	${MAKE} ${LIB_PATH} clean
+clean:	
+		${MAKE} libft clean
 		${RM} ${OBJS}
 
-fclean: clean
-		${MAKE} ${LIB_PATH} fclean
+fclean:	clean
+		${MAKE} libft fclean
 		${RM} ${NAME}
 
 re:     fclean all
 
-.PHONY: all bonus clean fclean re
+.PHONY: all clean fclean re
