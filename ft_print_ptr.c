@@ -6,26 +6,26 @@
 /*   By: ride-sou <ride-sou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 08:55:39 by ride-sou          #+#    #+#             */
-/*   Updated: 2023/04/28 17:01:34 by ride-sou         ###   ########.fr       */
+/*   Updated: 2023/04/28 20:22:28 by ride-sou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_ptr_len(intptr_t num)
+int	ft_ptr_len(unsigned long long num)
 {
 	int	len;
 
 	len = 0;
 	while (num != 0)
 	{
-		len++;
 		num = num / 16;
+		len++;
 	}
 	return (len);
 }
 
-void	ft_put_ptr(intptr_t num)
+void	ft_put_ptr(unsigned long long num)
 {
 	if (num >= 16)
 	{
@@ -46,13 +46,13 @@ int	ft_print_ptr(unsigned long long ptr)
 	int	print_len;
 
 	print_len = 0;
-	print_len += write(1, "0x", 2);
 	if (ptr == 0)
-		print_len += write(1, "0", 1);
-	else
 	{
-		ft_put_ptr(ptr);
-		print_len += ft_ptr_len(ptr);
+		print_len += write(1, "(nil)", 5);
+		return (5);
 	}
+	print_len += write(1, "0x", 2);
+	ft_put_ptr(ptr);
+	print_len += ft_ptr_len(ptr);
 	return (print_len);
 }
