@@ -6,17 +6,11 @@
 /*   By: ride-sou <ride-sou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 14:26:59 by ride-sou          #+#    #+#             */
-/*   Updated: 2023/04/28 21:21:27 by ride-sou         ###   ########.fr       */
+/*   Updated: 2023/05/02 10:58:01 by ride-sou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-int	ft_printchar(int c)
-{
-	write(1, &c, 1);
-	return (1);
-}
 
 int	ft_formats(va_list args, const char format)
 {
@@ -27,12 +21,12 @@ int	ft_formats(va_list args, const char format)
 		print_len += ft_printchar(va_arg(args, int));
 	else if (format == 's')
 		print_len += ft_printstr(va_arg(args, char *));
-	else if (format == 'p')
-		print_len += ft_print_ptr(va_arg(args, unsigned long long));
 	else if (format == 'd' || format == 'i')
 		print_len += ft_printnbr(va_arg(args, int));
 	else if (format == 'u')
 		print_len += ft_print_unsigned(va_arg(args, unsigned int));
+	else if (format == 'p')
+		print_len += ft_print_ptr(va_arg(args, unsigned long long), format);
 	else if (format == 'x' || format == 'X')
 		print_len += ft_print_hex(va_arg(args, unsigned int), format);
 	else if (format == '%')

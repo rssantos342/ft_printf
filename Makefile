@@ -6,14 +6,13 @@
 #    By: ride-sou <ride-sou@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/13 10:05:12 by ride-sou          #+#    #+#              #
-#    Updated: 2023/04/28 21:20:56 by ride-sou         ###   ########.fr        #
+#    Updated: 2023/05/02 10:45:42 by ride-sou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
 
-SRC = ft_printf.c ft_printf_aux.c ft_print_ptr.c ft_print_unsigned.c \
-	ft_print_hex.c \
+SRC = ft_printf.c ft_printf_aux.c ft_print_hex_ptr.c ft_print_unsigned.c
 
 OBJS = ${SRC:.c=.o}
 
