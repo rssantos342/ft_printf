@@ -6,24 +6,11 @@
 /*   By: ride-sou <ride-sou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 12:50:45 by ride-sou          #+#    #+#             */
-/*   Updated: 2023/04/28 15:58:01 by ride-sou         ###   ########.fr       */
+/*   Updated: 2023/05/02 09:50:46 by ride-sou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-int	ft_hex_len(unsigned int num)
-{
-	int	len;
-
-	len = 0;
-	while (num != 0)
-	{
-		num = num / 16;
-		len++;
-	}
-	return (len);
-}
 
 void	ft_put_hex(unsigned int num, const char format)
 {
@@ -52,5 +39,5 @@ int	ft_print_hex(unsigned int num, const char format)
 		return (write(1, "0", 1));
 	else
 		ft_put_hex(num, format);
-	return (ft_hex_len(num));
+	return (ft_hex_ptr_len(num));
 }

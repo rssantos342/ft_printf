@@ -6,7 +6,7 @@
 /*   By: ride-sou <ride-sou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 17:55:27 by ride-sou          #+#    #+#             */
-/*   Updated: 2023/04/28 16:50:29 by ride-sou         ###   ########.fr       */
+/*   Updated: 2023/05/02 09:52:13 by ride-sou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,4 +49,17 @@ int	ft_printpercent(void)
 	percent = '%';
 	write(1, &percent, 1);
 	return (1);
+}
+
+int	ft_hex_ptr_len(unsigned long long num)
+{
+	int	len;
+
+	len = 0;
+	while (num != 0)
+	{
+		num = num / 16;
+		len++;
+	}
+	return (len);
 }
