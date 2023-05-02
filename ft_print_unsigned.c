@@ -6,7 +6,7 @@
 /*   By: ride-sou <ride-sou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 11:55:09 by ride-sou          #+#    #+#             */
-/*   Updated: 2023/04/28 16:33:11 by ride-sou         ###   ########.fr       */
+/*   Updated: 2023/05/02 15:11:29 by ride-sou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	ft_num_len(unsigned int num)
 	int	len;
 
 	len = 0;
-	while (num != 0)
+	while (num > 0)
 	{
 		num = num / 10;
 		len++;
@@ -27,36 +27,36 @@ int	ft_num_len(unsigned int num)
 
 char	*ft_uitoa(unsigned int n)
 {
-	char	*num;
+	char	*str;
 	int		len;
 
 	len = ft_num_len(n);
-	num = (char *)malloc(sizeof(char *) * (len + 1));
-	if (!num)
-		return (0);
-	num[len] = '\0';
-	while (n != 0)
+	str = (char *)malloc(sizeof(char *) * (len + 1));
+	if (str == 0)
+		return (NULL);
+	str[len] = '\0';
+	while (n > 0)
 	{
-		num[len - 1] = 48 + (n % 10);
+		str[len - 1] = 48 + (n % 10);
 		n = n / 10;
 		len--;
 	}
-	return (num);
+	return (str);
 }
 
 int	ft_print_unsigned(unsigned int n)
 {
-	int		print_len;
+	int		len_unsg;
 	char	*num;
 
-	print_len = 0;
+	len_unsg = 0;
 	if (n == 0)
-		print_len += write(1, "0", 1);
+		len_unsg = write(1, "0", 1);
 	else
 	{
 		num = ft_uitoa(n);
-		print_len += ft_printstr(num);
+		len_unsg = ft_printstr(num);
 		free(num);
 	}
-	return (print_len);
+	return (len_unsg);
 }

@@ -6,7 +6,7 @@
 /*   By: ride-sou <ride-sou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 17:55:27 by ride-sou          #+#    #+#             */
-/*   Updated: 2023/05/02 11:01:20 by ride-sou         ###   ########.fr       */
+/*   Updated: 2023/05/02 15:25:23 by ride-sou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,7 @@
 
 int	ft_printchar(int c)
 {
-	write(1, &c, 1);
-	return (1);
+	return (write(1, &c, 1));
 }
 
 int	ft_printstr(char *str)
@@ -24,10 +23,7 @@ int	ft_printstr(char *str)
 
 	i = 0;
 	if (str == NULL)
-	{
-		write(1, "(null)", 6);
-		return (6);
-	}
+		return (write(1, "(null)", 6));
 	while (str[i])
 	{
 		write(1, &str[i], 1);
@@ -50,9 +46,5 @@ int	ft_printnbr(int n)
 
 int	ft_printpercent(void)
 {
-	char	percent;
-
-	percent = '%';
-	write(1, &percent, 1);
-	return (1);
+	return (write(1, "%", 1));
 }
